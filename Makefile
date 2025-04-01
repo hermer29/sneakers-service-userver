@@ -1,4 +1,4 @@
-PROJECT_NAME = service_template
+PROJECT_NAME = sneakers-service-userver
 NPROCS ?= $(shell nproc)
 CLANG_FORMAT ?= clang-format
 DOCKER_IMAGE ?= ghcr.io/userver-framework/ubuntu-24.04-userver:latest
@@ -70,6 +70,8 @@ format:
 $(addprefix docker-cmake-, $(PRESETS)) $(addprefix docker-build-, $(PRESETS)) $(addprefix docker-test-, $(PRESETS)) $(addprefix docker-clean-, $(PRESETS)) $(addprefix docker-start-, $(PRESETS)): docker-%:
 	docker run $(DOCKER_ARGS) \
 		--network=host \
+		--cap-add SYS_PTRACE \
+  		--security-opt seccomp=unconfined \
 		-v $$PWD:$$PWD \
 		-w $$PWD \
 		$(DOCKER_IMAGE) \
