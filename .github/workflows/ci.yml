@@ -58,7 +58,7 @@ jobs:
             run: |
                 make ${{matrix.make}}
           - name: Upload Artifact
-          - uses: actions/upload-artifact@v4
+            uses: actions/upload-artifact@v4
             if: failure()
             with:
               name: logs-${{matrix.make}}
