@@ -3,6 +3,7 @@ project(passec CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(DownloadUserver)
+include(https://github.com/cpm-cmake/CPM.cmake/blob/v0.38.0/cmake/CPM.cmake?raw=true)
 
 find_package(userver COMPONENTS core QUIET)
 if(NOT userver_FOUND)
@@ -11,6 +12,12 @@ if(NOT userver_FOUND)
 endif()
 
 userver_setup_environment()
+
+CPMAddPackage(
+  NAME jsoncons
+  GITHUB_REPOSITORY danielaparker/jsoncons
+  VERSION 0.171.0
+)
 
 include(FetchContent)
 
