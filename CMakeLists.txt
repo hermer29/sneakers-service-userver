@@ -3,7 +3,6 @@ project(passec CXX)
 
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(DownloadUserver)
-include(https://github.com/cpm-cmake/CPM.cmake/blob/v0.38.0/cmake/CPM.cmake?raw=true)
 
 find_package(userver COMPONENTS core QUIET)
 if(NOT userver_FOUND)
@@ -13,30 +12,16 @@ endif()
 
 userver_setup_environment()
 
-CPMAddPackage(
-  NAME jsoncons
-  GITHUB_REPOSITORY danielaparker/jsoncons
-  VERSION 0.171.0
-)
-
-include(FetchContent)
-
-FetchContent_Declare(
-    jwt-cpp
-    GIT_REPOSITORY https://github.com/Thalhammer/jwt-cpp.git
-    GIT_TAG v0.7.0
-)
-
-FetchContent_MakeAvailable(jwt-cpp)
-
-target_link_libraries(${PROJECT_NAME}_objs PRIVATE jwt-cpp::jwt-cpp)
-
 # Common sources
 add_library(${PROJECT_NAME}_objs OBJECT
-    src/authentication.hpp
-    src/authentication.cpp
+src/authentication.hpp
+src/authentication.cpp
 )
 target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver::core)
+
+# Add Project Libraries
+include(DownloadJWTCpp)
+target_link_libraries(${PROJECT_NAME}_objs PRIVATE jwt-cpp::jwt-cpp)
 
 
 # The Service
