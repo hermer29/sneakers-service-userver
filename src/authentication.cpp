@@ -16,7 +16,7 @@ public:
   std::string HandleRequestThrow(
       const userver::server::http::HttpRequest &request,
       userver::server::request::RequestContext &) const override {
-    return passec::Authorize(request.GetArg("login"), request.GetArg("password"));
+    return Authorize(request.GetArg("login"), request.GetArg("password"));
   }
 };
 

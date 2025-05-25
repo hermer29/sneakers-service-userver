@@ -18,6 +18,8 @@ src/authentication.hpp
 src/authentication.cpp
 )
 target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver::core)
+target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver::postgresql)
+
 
 # Add Project Libraries
 include(DownloadJWTCpp)
