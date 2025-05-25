@@ -19,11 +19,6 @@ public:
     return passec::Authorize(request.GetArg("login"), request.GetArg("password"));
   }
 };
-} // namespace passec
-
-
-
-namespace passec {
 
 const std::string Authorize(std::string_view& login, std::string_view& password) {
   
