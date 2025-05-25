@@ -62,5 +62,4 @@ jobs:
             with:
               if: success()
               path: |
-                ./build-release/sneakers-service-userver                
-                ./build-debug/sneakers-service-userver
+                ./build-*
