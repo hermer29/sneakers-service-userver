@@ -57,3 +57,12 @@ jobs:
           - name: Run ${{matrix.make}}
             run: |
                 make ${{matrix.make}}\
+    post-build:
+            name: "Post-build steps"
+            runs-on: ubuntu-22.04
+            needs: posix
+            steps:
+                - name: Upload Artifacts
+                  uses: actions/upload-artifact@v4
+                  with:
+                      name: build-release/sneakers-service-userver
