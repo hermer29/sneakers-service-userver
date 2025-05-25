@@ -56,12 +56,11 @@ jobs:
 
           - name: Run ${{matrix.make}}
             run: |
-                make ${{matrix.make}}
-          - name: Upload Artifact
+                make ${{matrix.make}}\
+          - name: Upload Build Artifact
             uses: actions/upload-artifact@v4
-            if: failure()
             with:
-              name: logs-${{matrix.make}}
+              if: success()
               path: |
-                **/*.log
-                **/test-results.xml
+                ./build-release/sneakers-service-userver                
+                ./build-debug/sneakers-service-userver
