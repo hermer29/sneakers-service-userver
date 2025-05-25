@@ -16,13 +16,13 @@ public:
   std::string HandleRequestThrow(
       const userver::server::http::HttpRequest &request,
       userver::server::request::RequestContext &) const override {
-    return Authorize(request.GetArg("login"), request.GetArg("password"));
+    return passec::Authorize(request.GetArg("login"), request.GetArg("password"));
   }
+  
 };
 
-const std::string Authorize(std::string_view& login, std::string_view& password) {
-  
-  return fmt::format("Hello, {}{}!\n", login, password);
+std::string Authorize(std::string_view login, std::string_view password) {
+  return fmt::format("Hello, {} {}!\n", login, password);
 }
 
 } // namespace passec
