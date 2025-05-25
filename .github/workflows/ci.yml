@@ -57,9 +57,3 @@ jobs:
           - name: Run ${{matrix.make}}
             run: |
                 make ${{matrix.make}}\
-          - name: Upload Build Artifact
-            uses: actions/upload-artifact@v4
-            with:
-              if: success()
-              path: |
-                ./build-*
