@@ -1,15 +1,13 @@
-include(FetchContent)
+include(get_cpm)
 
-FetchContent_Declare(
-    jwt-cpp
-    GIT_REPOSITORY https://github.com/Thalhammer/jwt-cpp.git
-    GIT_TAG v0.7.0
+CPMAddPackage(
+  NAME jwt-cpp
+  GITHUB_REPOSITORY Thalhammer/jwt-cpp
+  GIT_TAG v0.7.0
 )
 
 CPMAddPackage(
-  NAME jsoncons
-  GITHUB_REPOSITORY danielaparker/jsoncons
-  VERSION 0.171.0
+  NAME picojson
+  GITHUB_REPOSITORY kazuho/picojson
+  GIT_TAG v1.3.0
 )
-
-FetchContent_MakeAvailable(jwt-cpp)
