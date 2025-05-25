@@ -20,4 +20,4 @@ void AuthenticationBenchmark(benchmark::State& state) {
   });
 }
 
-BENCHMARK(HelloBenchmark);
+BENCHMARK(AuthenticationBenchmark);
