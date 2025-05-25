@@ -5,7 +5,9 @@
 
 namespace passec {
 
-    class Authentication;
+    class Authentication {
+
+    };
 
 std::string Authorize(std::string_view login, std::string_view password);
 
