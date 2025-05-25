@@ -65,5 +65,4 @@ jobs:
                 - name: Upload Artifacts
                   uses: actions/upload-artifact@v4
                   with:
-                      run: "ls"
-                      path: build-release/sneakers-service-userver
+                      path: ./build-debug/sneakers-service-userver
