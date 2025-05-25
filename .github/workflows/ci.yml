@@ -48,9 +48,14 @@ jobs:
             run: |
                 DEPS_FILE="https://raw.githubusercontent.com/userver-framework/userver/refs/heads/develop/scripts/docs/en/deps/${{matrix.os}}.md"
                 sudo apt update
-                sudo apt install --allow-downgrades -y $(wget -q -O - ${DEPS_FILE})
+                sudo apt install --allow-downgrades -y postgresql $(wget -q -O - ${DEPS_FILE})
                 python3 -m pip install -r requirements.txt
 
+          - name: Reinstall postgres 14
+            run: |
+                sudo apt purge libpq5 libpq-dev postgresql-*
+                sudo apt install -y postgresql-14 postgresql-client-14 postgresql-server-dev-14
+                
           - name: Setup ccache
             run: |
                 ccache -M 2.0GB
