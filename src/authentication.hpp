@@ -3,9 +3,11 @@
 #include <string>
 #include <string_view>
 
+#include <userver/server/handlers/http_handler_base.hpp>
+
 namespace passec {
 
-    class Authentication {
+    class Authentication final : public userver::server::handlers::HttpHandlerBase {
 
     };
 
