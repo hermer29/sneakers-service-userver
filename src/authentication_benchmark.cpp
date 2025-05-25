@@ -14,7 +14,7 @@ void AuthenticationBenchmark(benchmark::State& state) {
 
     for (auto _ : state) {
       const auto name = kNames[i++ % std::size(kNames)];
-      auto result = passec::SayHelloTo(name);
+      auto result = passec::Authorize(name, name);
       benchmark::DoNotOptimize(result);
     }
   });
