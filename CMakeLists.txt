@@ -22,8 +22,6 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(jwt-cpp)
 
-target_link_libraries(${PROJECT_NAME} PRIVATE jwt-cpp::jwt-cpp)
-
 target_link_libraries(${PROJECT_NAME}_objs PRIVATE jwt-cpp::jwt-cpp)
 
 # Common sources
