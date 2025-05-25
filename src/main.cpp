@@ -5,8 +5,9 @@
 #include <userver/server/handlers/tests_control.hpp>
 #include <userver/testsuite/testsuite_support.hpp>
 #include <userver/utils/daemon_run.hpp>
+#include <userver/storages/postgres/component.hpp>
 
-#include "hello.hpp"
+#include "authentication.hpp"
 
 int main(int argc, char* argv[]) {
   auto component_list = userver::components::MinimalServerComponentList()
@@ -14,9 +15,9 @@ int main(int argc, char* argv[]) {
                             .Append<userver::components::TestsuiteSupport>()
                             .Append<userver::components::HttpClient>()
                             .Append<userver::clients::dns::Component>()
-                            .Append<userver::server::handlers::TestsControl>();
-
-  service_template::AppendHello(component_list);
+                            .Append<userver::server::handlers::TestsControl>()
+                            // Passec
+                            .Append<passec::Authentication>();
 
   return userver::utils::DaemonMain(argc, argv, component_list);
 }
