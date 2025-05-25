@@ -12,7 +12,17 @@ endif()
 
 userver_setup_environment()
 
-find_package(jwt-cpp CONFIG REQUIRED)
+include(FetchContent)
+
+FetchContent_Declare(
+    jwt-cpp
+    GIT_REPOSITORY https://github.com/Thalhammer/jwt-cpp.git
+    GIT_TAG v0.7.0
+)
+
+FetchContent_MakeAvailable(jwt-cpp)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE jwt-cpp::jwt-cpp)
 
 target_link_libraries(${PROJECT_NAME}_objs PRIVATE jwt-cpp::jwt-cpp)
 
