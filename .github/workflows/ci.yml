@@ -47,9 +47,7 @@ jobs:
           - name: Install packages
             run: |
                 DEPS_FILE="https://raw.githubusercontent.com/userver-framework/userver/refs/heads/develop/scripts/docs/en/deps/${{matrix.os}}.md"
-                PROJECT_DEPS_FILE="https://raw.githubusercontent.com/hermer29/sneakers-service-userver/refs/heads/develop/dependencies.md"
                 sudo apt update
-                sudo apt install -y $(wget -q -O - ${PROJECT_DEPS_FILE})
                 sudo apt install --allow-downgrades -y $(wget -q -O - ${DEPS_FILE})
                 python3 -m pip install -r requirements.txt
 
