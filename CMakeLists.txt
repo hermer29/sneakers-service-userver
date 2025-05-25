@@ -4,7 +4,11 @@ project(passec CXX)
 list(APPEND CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 include(DownloadUserver)
 
-find_package(userver COMPONENTS core postgresql QUIET)
+find_package(userver COMPONENTS 
+  core 
+  postgresql 
+  QUIET
+)
 if(NOT userver_FOUND)
   # Tries TRY_DIR first, falls back to downloading userver from GitHub using CPM.
   download_userver(TRY_DIR third_party/userver)
@@ -17,8 +21,10 @@ add_library(${PROJECT_NAME}_objs OBJECT
 src/authentication.hpp
 src/authentication.cpp
 )
-target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver::postgresql)
-
+target_link_libraries(${PROJECT_NAME}_objs PUBLIC
+  userver::core
+  userver::postgresql # postgres template current
+)
 
 # Add Project Libraries
 include(DownloadJWTCpp)
