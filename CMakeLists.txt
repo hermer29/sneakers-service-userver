@@ -17,7 +17,6 @@ add_library(${PROJECT_NAME}_objs OBJECT
 src/authentication.hpp
 src/authentication.cpp
 )
-target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver::core)
 target_link_libraries(${PROJECT_NAME}_objs PUBLIC userver::postgresql)
 
 
