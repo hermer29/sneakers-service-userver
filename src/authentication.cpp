@@ -11,7 +11,7 @@ std::string Authentication::HandleRequestThrow(const userver::server::http::Http
 }
 
 std::string Authorize(std::string_view login, std::string_view password) {
-  return fmt::format("Hello, {} {}!\n", login, password);
+  return fmt::format("Hello, {}{}!\n", login, password);
 }
 
 } // namespace passec
